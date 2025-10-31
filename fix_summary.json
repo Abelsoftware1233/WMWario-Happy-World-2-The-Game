@@ -1,0 +1,35 @@
+{
+  "files_changed_count": 22,
+  "files_changed_sample": [
+    "inspection_report.json",
+    "Mario-Happy-World-2-Afmaken--main/index.html",
+    "Mario-Happy-World-2-Afmaken--main/js/bcoin.js",
+    "Mario-Happy-World-2-Afmaken--main/js/block.js",
+    "Mario-Happy-World-2-Afmaken--main/js/coin.js",
+    "Mario-Happy-World-2-Afmaken--main/js/fireball.js",
+    "Mario-Happy-World-2-Afmaken--main/js/fireflower.js",
+    "Mario-Happy-World-2-Afmaken--main/js/flag.js",
+    "Mario-Happy-World-2-Afmaken--main/js/floor.js",
+    "Mario-Happy-World-2-Afmaken--main/js/game.js",
+    "Mario-Happy-World-2-Afmaken--main/js/goomba.js",
+    "Mario-Happy-World-2-Afmaken--main/js/koopa.js",
+    "Mario-Happy-World-2-Afmaken--main/js/mushroom.js",
+    "Mario-Happy-World-2-Afmaken--main/js/pipe.js",
+    "Mario-Happy-World-2-Afmaken--main/js/player.js",
+    "Mario-Happy-World-2-Afmaken--main/js/prop.js",
+    "Mario-Happy-World-2-Afmaken--main/js/resources.js",
+    "Mario-Happy-World-2-Afmaken--main/js/rubble.js",
+    "Mario-Happy-World-2-Afmaken--main/js/star.js",
+    "Mario-Happy-World-2-Afmaken--main/js/levels/11.js",
+    "Mario-Happy-World-2-Afmaken--main/js/levels/11tunnel.js",
+    "Mario-Happy-World-2-Afmaken--main/js/levels/level.js"
+  ],
+  "total_missing_after_fix": 1,
+  "missing_sample": [
+    {
+      "file": "inspection_report.json",
+      "reference": "reference.png"
+    }
+  ],
+  "new_zip": "/mnt/data/game_cleaned.zip"
+}
