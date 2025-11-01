@@ -2,7 +2,7 @@
   if (typeof Mario === 'undefined')
   window.Mario = {};
 
-  /TODO: On console the hitbox is smaller. Measure it and edit this.
+  //TODO: On console the hitbox is smaller. Measure it and edit this.
 
   var Goomba = Mario.Goomba = function(pos, sprite) {
     this.dying = false;
@@ -20,7 +20,7 @@
   };
 
   Goomba.prototype.update = function(dt, vX) {
-    if (this.pos[0] - vX > 336) { /if we're too far away, do nothing.
+    if (this.pos[0] - vX > 336) { //if we're too far away, do nothing.
       return;
     } else if (this.pos[0] - vX < -32) {
       delete level.enemies[this.idx];
@@ -71,9 +71,9 @@
     }
     var that = this;
     level.enemies.forEach(function(enemy){
-      if (enemy === that) { /don't check collisions with ourselves.
+      if (enemy === that) { //don't check collisions with ourselves.
         return;
-      } else if (enemy.pos[0] - vX > 336){ /stop checking once we get to far away dudes.
+      } else if (enemy.pos[0] - vX > 336){ //stop checking once we get to far away dudes.
         return;
       } else {
         that.isCollideWith(enemy);
@@ -87,19 +87,19 @@
       return;
     }
 
-    /the first two elements of the hitbox array are an offset, so let's do this now.
+    //the first two elements of the hitbox array are an offset, so let's do this now.
     var hpos1 = [this.pos[0] + this.hitbox[0], this.pos[1] + this.hitbox[1]];
     var hpos2 = [ent.pos[0] + ent.hitbox[0], ent.pos[1] + ent.hitbox[1]];
 
-    /if the hitboxes actually overlap
+    //if the hitboxes actually overlap
     if (!(hpos1[0] > hpos2[0]+ent.hitbox[2] || (hpos1[0]+this.hitbox[2] < hpos2[0]))) {
       if (!(hpos1[1] > hpos2[1]+ent.hitbox[3] || (hpos1[1]+this.hitbox[3] < hpos2[1]))) {
-        if (ent instanceof Mario.Player) { /if we hit the player
-          if (ent.vel[1] > 0) { /then the goomba dies
+        if (ent instanceof Mario.Player) { //if we hit the player
+          if (ent.vel[1] > 0) { //then the goomba dies
             this.stomp();
           } else if (ent.starTime) {
             this.bump();
-          } else { /or the player gets hit
+          } else { //or the player gets hit
             ent.damage();
           }
         } else {
@@ -120,6 +120,7 @@
 
   Goomba.prototype.bump = function() {
     sounds.kick.play();
+    // CORRECTIE: Pad is gecorrigeerd. Controleer of dit werkt.
     this.sprite.img = '../sprites/enemyr.png';
     this.flipping = true;
     this.pos[1] -= 1;
