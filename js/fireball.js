@@ -1,6 +1,6 @@
 (function() {
   if (typeof Mario === 'undefined')
-    window.Mario = {};
+  window.Mario = {};
 
   var Fireball = Mario.Fireball = function(pos) {
     this.hit = 0;
@@ -8,8 +8,8 @@
 
     Mario.Entity.call(this, {
       pos: pos,
-      // CORRECTIE: Pad is gecorrigeerd. Controleer of dit werkt.
-      sprite: new Mario.Sprite('../sprites/items.png', [96, 144], [8,8], 5, [0,1,2,3]),
+      // CORRECTIE: Pad is gecorrigeerd van '../sprites/items.png' naar 'sprites/items.png'
+      sprite: new Mario.Sprite('sprites/items.png', [96, 144], [8,8], 5, [0,1,2,3]), 
       hitbox: [0,0,8,8]
     });
   }
@@ -93,7 +93,7 @@
         if (level.statics[baseY + i][baseX + j]) {
           level.statics[baseY + i][baseX + j].isCollideWith(this);
         }
-        if (level.blocks[baseY + i][baseX + j]) {
+        if (level.blocks[baseY + i] && level.blocks[baseY + i][baseX + j]) {
           level.blocks[baseY + i][baseX + j].isCollideWith(this);
         }
       }
