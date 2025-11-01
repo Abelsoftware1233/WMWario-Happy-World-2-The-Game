@@ -1,4 +1,4 @@
-var oneone = Mario.oneone = function() {
+Var oneone = Mario.oneone = function() {
   // The things that need to be passed in are basically just dependent on what
   // tileset we're in, so it makes more sense to just make one variable for that, so
   // TODO: put as much of this in the Level object definition as possible.
