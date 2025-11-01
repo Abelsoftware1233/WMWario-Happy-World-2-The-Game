@@ -21,19 +21,19 @@
     this.goombaSprite = options.goombaSprite;
     this.koopaSprite = options.koopaSprite;
 
-    /prop pipe sprites, to be phased out
+    // prop pipe sprites, to be phased out
     this.pipeLEndSprite = options.pipeLEndSprite;
     this.pipeREndSprite = options.pipeREndSprite;
     this.pipeLMidSprite = options.pipeLMidSprite;
     this.pipeRMidSprite = options.pipeRMidSprite;
 
-    /real pipe sprites, use these.
+    // real pipe sprites, use these.
     this.pipeUpMid = options.pipeUpMid;
     this.pipeSideMid = options.pipeSideMid;
     this.pipeLeft = options.pipeLeft;
     this.pipeTop = options.pipeTop;
 
-    this.flagpoleSprites = options.flagPoleSprites;
+    this.flagpoleSprites = options.flagpoleSprites;
 
     this.LPipeSprites = options.LPipeSprites;
     this.cloudSprites = options.cloudSprites;
@@ -74,7 +74,7 @@
   };
 
   Level.prototype.putWall = function(x, y, height) {
-    /y is the bottom of the wall in this case.
+    // y is the bottom of the wall in this case.
     for (var i = y-height; i < y; i++) {
       this.statics[i][x] = new Mario.Floor([16*x, 16*i], this.wallSprite);
     }
@@ -92,7 +92,7 @@
     }
   };
 
-  /sometimes, pipes don't go straight up and down.
+  // sometimes, pipes don't go straight up and down.
   Level.prototype.putLeftPipe = function(x,y) {
     this.statics[y][x] = new Mario.Floor([16*x, 16*y], this.LPipeSprites[0]);
     this.statics[y+1][x] = new Mario.Floor([16*x,16*(y+1)], this.LPipeSprites[1]);
