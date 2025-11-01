@@ -14,7 +14,8 @@ var canvas = document.createElement("canvas");
 var ctx = canvas.getContext('2d');
 var updateables = [];
 var fireballs = [];
-var player = new Mario.Player([0,0]);
+// Zorg ervoor dat Mario.Player in player.js correct is gedefinieerd voordat dit wordt aangeroepen
+var player = new Mario.Player([0,0]); 
 
 // we might have to get the size and calculate the scaling
 // but this method should let us make it however big.
@@ -72,7 +73,16 @@ function init() {
     powerup: new Audio('sounds/powerup.wav'),
     stomp: new Audio('sounds/stomp.wav')
   };
-  Mario.oneone();
+  
+  // *** AANGEPASTE REGEL VOOR DE SYNTAX ERROR ***
+  // We roepen de level-initializer nu aan met een veilige controle.
+  if (Mario && Mario.oneone) {
+      level = Mario.oneone(); 
+  } else {
+      console.error("Mario.oneone is niet gedefinieerd. Levelbestanden zijn mogelijk niet correct geladen.");
+      return; // Stop de initialisatie om verdere fouten te voorkomen
+  }
+  
   lastTime = Date.now();
   main();
 }
