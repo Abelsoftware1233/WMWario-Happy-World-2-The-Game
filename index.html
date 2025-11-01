@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Mario</title>
 
-    <!-- Correctie: De dubbele schuine streep (//) is nu overal toegevoegd, dit was de oorzaak van 404-fouten. -->
+    <!-- Correctie van foute paden: De dubbele schuine streep (//) is nu overal toegevoegd. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
@@ -20,7 +20,7 @@
         }
 
         body {
-            background-color: #1a202c; /* Donkerdere achtergrond voor contrast */
+            background-color: #1a202c;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -36,13 +36,11 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        /* Canvas moet de ID 'gameCanvas' gebruiken */
         canvas {
             display: block;
             width: 762px;
             height: 720px;
             background-color: #63b3ed;
-            /* Houdt de pixel-art scherp, erg belangrijk! */
             image-rendering: pixelated;
         }
 
@@ -73,7 +71,6 @@
 <body class="bg-gray-900 text-white font-inter">
 
     <div class="game-container">
-        <!-- Belangrijk: De canvas moet een ID hebben zodat game.js deze kan vinden -->
         <canvas id="gameCanvas"></canvas>
     </div>
 
@@ -82,12 +79,37 @@
         <p>Gebruik de pijltjestoetsen om te bewegen.<br>Gebruik **X** om te springen.<br>Gebruik **Z** om te rennen.</p>
     </div>
 
-    <!-- HIER WORDEN ALLE NATIVE JS-BESTANDEN GELADEN -->
-    <!-- Zorg ervoor dat deze paden (js/...) kloppen in je mappenstructuur. -->
+    <!-- START: INLADEN VAN ALLE SCRIPTS IN DE JUISTE VOLGORDE -->
+    <!-- 1. Hulpprogramma's en Bronnen -->
+    <script src="js/util.js"></script>
     <script src="js/input.js"></script>
     <script src="js/resources.js"></script>
-    <!-- De echte game.js moet als laatste worden geladen -->
+    <script src="js/sprite.js"></script>
+
+    <!-- 2. Game-entiteiten (blokken, vijanden, speler) -->
+    <script src="js/entities/block.js"></script>
+    <script src="js/entities/coin.js"></script>
+    <script src="js/entities/pipe.js"></script>
+    <script src="js/entities/rubble.js"></script>
+    <script src="js/entities/goomba.js"></script>
+    <script src="js/entities/koopa.js"></script>
+    <script src="js/entities/fireball.js"></script>
+    <script src="js/entities/star.js"></script>
+    <script src="js/entities/mushroom.js"></script>
+    <script src="js/entities/fireflower.js"></script>
+    <script src="js/entities/floor.js"></script>
+    <script src="js/entities/prop.js"></script>
+    <script src="js/entities/flag.js"></script>
+    <script src="js/entities/player.js"></script>
+
+    <!-- 3. Level definitie -->
+    <script src="js/levels/level.js"></script>
+    <script src="js/levels/11.js"></script>
+    <script src="js/levels/11tunnel.js"></script>
+
+    <!-- 4. De Hoofd Game Loop -->
     <script src="js/game.js"></script>
+    <!-- EINDE: INLADEN VAN ALLE SCRIPTS -->
 
 </body>
 </html>
