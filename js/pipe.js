@@ -151,11 +151,10 @@
         break;
       case "LEFT":
         this.endsection.render(ctx, this.pos[0]+16*(this.length-1), this.pos[1], vX, vY)
-        for (var i = 0; i < this.legth-1; i++) {
+        for (var i = 0; i < this.length-1; i++) { // BUG FIX: this.legth-1 changed to this.length-1
           this.midsection.render(ctx, this.pos[0], this.pos[1]+i*16, vX, vY)
         }
         break;
     }
   }
 })();
-
