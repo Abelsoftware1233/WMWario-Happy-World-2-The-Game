@@ -144,3 +144,55 @@ function updateEntities(dt, gameTime) {
       vX = player.pos[0] - 96
   }else if (level.scrolling && player.pos[0] > vX + 80) {
     vX = player.pos[0] - 80;
+  }
+}
+
+function checkCollisions() {
+  player.checkCollisions();
+  level.pipes.forEach(function(pipe) {
+    pipe.checkCollisions();
+  });
+
+  var i = level.enemies.length;
+  while (i--) {
+    if (level.enemies[i]) level.enemies[i].checkCollisions();
+  }
+
+  i = level.items.length;
+  while (i--) {
+    if (level.items[i]) level.items[i].checkCollisions();
+  }
+
+  i = fireballs.length;
+  while (i--) {
+    if (fireballs[i]) fireballs[i].checkCollisions();
+  }
+}
+
+function render() {
+  ctx.fillStyle = level.background;
+  ctx.fillRect(vX, vY, vWidth + 10, vHeight + 10);
+
+  level.render(ctx, vX, vY);
+
+  updateables.forEach(function(ent) {
+    ent.render(ctx, vX, vY);
+  });
+
+  var i = level.items.length;
+  while (i--) {
+    if (level.items[i]) level.items[i].render(ctx, vX, vY);
+  }
+
+  i = level.enemies.length;
+  while (i--) {
+    if (level.enemies[i]) level.enemies[i].render(ctx, vX, vY);
+  }
+
+  i = fireballs.length;
+  while (i--) {
+    if (fireballs[i]) fireballs[i].render(ctx, vX, vY);
+  }
+
+  player.render(ctx, vX, vY);
+}
