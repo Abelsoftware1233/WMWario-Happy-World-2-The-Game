@@ -1,4 +1,3 @@
-// simple resource loader
 (function() {
     var resourceCache = {};
     var loading = [];
@@ -60,4 +59,3 @@
         isReady: isReady
     };
 })();
-
