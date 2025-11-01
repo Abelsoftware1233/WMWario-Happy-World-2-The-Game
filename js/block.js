@@ -1,6 +1,6 @@
 (function() {
   if (typeof Mario === 'undefined')
-    window.Mario = {};
+  window.Mario = {};
 
   //TODO: clean up the logic for sprite switching.
   //TODO: There's a weird bug with the collision logic. Look into it.
