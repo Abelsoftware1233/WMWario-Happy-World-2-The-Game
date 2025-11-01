@@ -1,3 +1,4 @@
+// Aangezien je deze code al had en de IIFE goed was, blijft deze grotendeels hetzelfde.
 (function() {
     if (typeof Mario === 'undefined')
         window.Mario = {};
