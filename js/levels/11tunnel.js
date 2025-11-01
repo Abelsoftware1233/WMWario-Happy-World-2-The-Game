@@ -1,4 +1,4 @@
-var oneonetunnel = Mario.oneonetunnel = function() {
+Var oneonetunnel = Mario.oneonetunnel = function() {
   level = new Mario.Level({
     playerPos: [40,16],
     loader: Mario.oneonetunnel,
@@ -65,3 +65,4 @@ var oneonetunnel = Mario.oneonetunnel = function() {
   music.underground.currentTime = 0;
   music.underground.play();
 };
+
