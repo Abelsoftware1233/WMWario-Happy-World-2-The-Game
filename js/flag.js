@@ -1,6 +1,6 @@
 (function() {
   if (typeof Mario === 'undefined')
-    window.Mario = {};
+  window.Mario = {};
 
   Flag = Mario.Flag = function(pos) {
     //afaik flags always have the same height and Y-position
@@ -41,7 +41,7 @@
     }
   }
 
-  Flag.prototype.render = function() {
+  Flag.prototype.render = function(ctx, vX, vY) { // Added missing parameters
     level.flagpoleSprites[2].render(ctx, this.pos[0]-8, this.pos[1], vX, vY);
   }
 })();
