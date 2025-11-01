@@ -94,12 +94,12 @@
 
   // sometimes, pipes don't go straight up and down.
   Level.prototype.putLeftPipe = function(x,y) {
-    this.statics[y][x] = new Mario.Floor([16*x, 16*y], this.LPipeSprites[0]);
-    this.statics[y+1][x] = new Mario.Floor([16*x,16*(y+1)], this.LPipeSprites[1]);
-    this.statics[y][x+1] = new Mario.Floor([16*(x+1),16*y], this.LPipeSprites[2]);
-    this.statics[y+1][x+1] = new Mario.Floor([16*(x+1),16*(y+1)], this.LPipeSprites[3]);
-    this.statics[y][x+2] = new Mario.Floor([16*(x+2),16*y], this.LPipeSprites[4]);
-    this.statics[y+1][x+2] = new Mario.Floor([16*(x+2),16*(y+1)], this.LPipeSprites[5]);
+    this.statics[y][x] = new Mario.Prop([16*x, 16*y], this.LPipeSprites[0]);
+    this.statics[y+1][x] = new Mario.Prop([16*x,16*(y+1)], this.LPipeSprites[1]);
+    this.statics[y][x+1] = new Mario.Prop([16*(x+1),16*y], this.LPipeSprites[2]);
+    this.statics[y+1][x+1] = new Mario.Prop([16*(x+1),16*(y+1)], this.LPipeSprites[3]);
+    this.statics[y][x+2] = new Mario.Prop([16*(x+2),16*y], this.LPipeSprites[4]);
+    this.statics[y+1][x+2] = new Mario.Prop([16*(x+2),16*(y+1)], this.LPipeSprites[5]);
   };
 
   Level.prototype.putCoin = function(x, y) {
