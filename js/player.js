@@ -18,8 +18,7 @@
 		this.targetPos = [];
 
 		Mario.Entity.call(this, {
-			// CORRECTIE: Sprite pad is gecorrigeerd. Ik laat '../sprites/player.png' staan zoals in jouw code.
-			// Controleer of dit pad werkt of dat je 'sprites/player.png' moet gebruiken.
+			// Controleer dit pad: '../sprites/player.png' is misschien 'sprites/player.png' of 'player.png'
 			pos: pos,
 			sprite: new Mario.Sprite('../sprites/player.png', [80, 32], [16, 16], 0),
 			hitbox: [0, 0, 16, 16]
@@ -195,7 +194,6 @@
 		}
 
 		// Keuze van de sprite afhankelijk van de kijkrichting
-		// CORRECTIE: Pad is gecorrigeerd. Controleer of dit werkt.
 		if (this.left) {
 			this.sprite.img = '../sprites/playerl.png';
 		} else {
@@ -338,7 +336,6 @@
 			this.sprite.pos[0] = 80;
 			var newy = this.sprite.pos[1] - 32;
 			this.powerSprites = [[80, newy + 32], [80, newy + 32], [320, newy], [80, newy], [128, newy]];
-			// Fout hersteld
 			this.powerSizes = [[16, 16], [16, 16], [16, 32], [16, 32], [16, 32]];
 			this.shift = [0, 16, -16, 0, -16];
 			this.power = 1;
@@ -349,7 +346,6 @@
 				[curx, level.invincibility[1]], [curx, level.invincibility[2]],
 				[curx, 96]
 			];
-			// Fout hersteld
 			this.powerSizes = [[16, 32], [16, 32], [16, 32], [16, 32], [16, 32]];
 			this.shift = [0, 0, 0, 0, 0];
 			this.power = 2;
@@ -365,11 +361,9 @@
 		} else {
 			sounds.pipe.play();
 			this.powering = [0, 5, 1, 5, 2, 5, 1, 5, 2, 5, 1, 5, 2, 5, 1, 5, 2, 5, 1, 5, 2, 5, 3];
-			// Fout hersteld: array is nu van dezelfde lengte als de powerings.
 			this.shift = [0, 16, -16, 16, 0, 16, -16, 16, 0, 16, -16, 16, 0, 16, -16, 16, 0, 16, -16, 16, 0, 16, -16];
 			this.sprite.pos = [160, 0];
 			this.powerSprites = [[160, 0], [240, 32], [240, 0], [160, 32]];
-			// Fout hersteld
 			this.powerSizes = [[16, 32], [16, 16], [16, 32], [16, 16]];
 			this.invincibility = 120;
 			this.power = 0;
