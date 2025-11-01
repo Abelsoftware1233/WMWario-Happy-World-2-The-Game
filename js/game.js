@@ -9,30 +9,30 @@ var requestAnimFrame = (function(){
     };
 })();
 
-/create the canvas
+// create the canvas
 var canvas = document.createElement("canvas");
 var ctx = canvas.getContext('2d');
 var updateables = [];
 var fireballs = [];
 var player = new Mario.Player([0,0]);
 
-/we might have to get the size and calculate the scaling
-/but this method should let us make it however big.
-/Cool!
-/TODO: Automatically scale the game to work and look good on widescreen.
-/TODO: fiddling with scaled sprites looks BETTER, but not perfect. Hmm.
+// we might have to get the size and calculate the scaling
+// but this method should let us make it however big.
+// Cool!
+// TODO: Automatically scale the game to work and look good on widescreen.
+// TODO: fiddling with scaled sprites looks BETTER, but not perfect. Hmm.
 canvas.width = 762;
 canvas.height = 720;
 ctx.scale(3,3);
 document.body.appendChild(canvas);
 
-/viewport
+// viewport
 var vX = 0,
     vY = 0,
     vWidth = 256,
     vHeight = 240;
 
-/load our images
+// load our images
 resources.load([
   '../sprites/player.png',
   '../sprites/enemy.png',
@@ -47,7 +47,7 @@ var level;
 var sounds;
 var music;
 
-/initialize
+// initialize
 var lastTime;
 function init() {
   music = {
@@ -77,7 +77,7 @@ function init() {
 
 var gameTime = 0;
 
-/set up the game loop
+// set up the game loop
 function main() {
   var now = Date.now();
   var dt = (now - lastTime) / 1000.0;
@@ -99,7 +99,7 @@ function update(dt) {
 }
 
 function handleInput(dt) {
-  if (player.piping || player.dying || player.noInput) return; /don't accept input
+  if (player.piping || player.dying || player.noInput) return; // don't accept input
 
   if (input.isDown('RUN')){
     player.run();
@@ -109,7 +109,7 @@ function handleInput(dt) {
   if (input.isDown('JUMP')) {
     player.jump();
   } else {
-    /we need this to handle the timing for how long you hold it
+    // we need this to handle the timing for how long you hold it
     player.noJump();
   }
 
@@ -119,24 +119,24 @@ function handleInput(dt) {
     player.noCrouch();
   }
 
-  if (input.isDown('LEFT')) { / 'd' or left arrow
+  if (input.isDown('LEFT')) { // 'd' or left arrow
     player.moveLeft();
   }
-  else if (input.isDown('RIGHT')) { / 'k' or right arrow
+  else if (input.isDown('RIGHT')) { // 'k' or right arrow
     player.moveRight();
   } else {
     player.noWalk();
   }
 }
 
-/update all the moving stuff
+// update all the moving stuff
 function updateEntities(dt, gameTime) {
   player.update(dt, vX);
   updateables.forEach (function(ent) {
     ent.update(dt, gameTime);
   });
 
-  /This should stop the jump when he switches sides on the flag.
+  // This should stop the jump when he switches sides on the flag.
   if (player.exiting) {
     if (player.pos[0] > vX + 96)
       vX = player.pos[0] - 96
@@ -161,12 +161,12 @@ function updateEntities(dt, gameTime) {
   });
 }
 
-/scan for collisions
+// scan for collisions
 function checkCollisions() {
   if (player.powering.length !== 0 || player.dying) { return; }
   player.checkCollisions();
 
-  /Apparently for each will just skip indices where things were deleted.
+  // Apparently for each will just skip indices where things were deleted.
   level.items.forEach(function(item) {
     item.checkCollisions();
   });
@@ -181,14 +181,14 @@ function checkCollisions() {
   });
 }
 
-/draw the game!
+// draw the game!
 function render() {
   updateables = [];
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = level.background;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  /scenery gets drawn first to get layering right.
+  // scenery gets drawn first to get layering right.
   for(var i = 0; i < 15; i++) {
     for (var j = Math.floor(vX / 16) - 1; j < Math.floor(vX / 16) + 20; j++){
       if (level.scenery[i][j]) {
@@ -197,7 +197,7 @@ function render() {
     }
   }
 
-  /then items
+  // then items
   level.items.forEach (function (item) {
     renderEntity(item);
   });
@@ -212,7 +212,7 @@ function render() {
     renderEntity(fireball);
   })
 
-  /then we draw every static object.
+  // then we draw every static object.
   for(var i = 0; i < 15; i++) {
     for (var j = Math.floor(vX / 16) - 1; j < Math.floor(vX / 16) + 20; j++){
       if (level.statics[i][j]) {
@@ -225,12 +225,12 @@ function render() {
     }
   }
 
-  /then the player
+  // then the player
   if (player.invincibility % 2 === 0) {
     renderEntity(player);
   }
 
-  /Mario goes INTO pipes, so naturally they go after.
+  // Mario goes INTO pipes, so naturally they go after.
   level.pipes.forEach (function(pipe) {
     renderEntity(pipe);
   });
@@ -239,3 +239,4 @@ function render() {
 function renderEntity(entity) {
   entity.render(ctx, vX, vY);
 }
+
