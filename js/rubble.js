@@ -2,7 +2,7 @@
   if (typeof Mario === 'undefined')
   window.Mario = {};
 
-  /TODO: make each rubble an entity, use that render and write in Entity.update
+  //TODO: make each rubble an entity, use that render and write in Entity.update
   var Rubble = Mario.Rubble = function() {
     this.sprites = [];
     this.poss = [];
@@ -42,8 +42,8 @@
     }
   }
 
-  /You might argue that things that can't collide are more like scenery
-  /but these move and need to be deleted, and i'd rather deal with the 1d array.
+  //You might argue that things that can't collide are more like scenery
+  //but these move and need to be deleted, and i'd rather deal with the 1d array.
   Rubble.prototype.checkCollisions = function() {;}
 
   Rubble.prototype.render = function() {
