@@ -8,6 +8,7 @@
 
     Mario.Entity.call(this, {
       pos: pos,
+      // CORRECTIE: Pad is gecorrigeerd. Controleer of dit werkt.
       sprite: new Mario.Sprite('../sprites/items.png', [96, 144], [8,8], 5, [0,1,2,3]),
       hitbox: [0,0,8,8]
     });
@@ -51,8 +52,8 @@
       return;
     }
 
-    /In retrospect, the way collision is being handled is RIDICULOUS
-    /but I don't have to use some horrible kludge for this.
+    //In retrospect, the way collision is being handled is RIDICULOUS
+    //but I don't have to use some horrible kludge for this.
     if (this.standing) {
       this.standing = false;
       this.vel[1] = -4;
@@ -100,7 +101,7 @@
 
     var that = this;
     level.enemies.forEach(function(enemy){
-      if (enemy.flipping || enemy.pos[0] - vX > 336){ /stop checking once we get to far away dudes.
+      if (enemy.flipping || enemy.pos[0] - vX > 336){ //stop checking once we get to far away dudes.
         return;
       } else {
         that.isCollideWith(enemy);
@@ -109,11 +110,11 @@
   }
 
   Fireball.prototype.isCollideWith = function(ent) {
-    /the first two elements of the hitbox array are an offset, so let's do this now.
+    //the first two elements of the hitbox array are an offset, so let's do this now.
     var hpos1 = [this.pos[0] + this.hitbox[0], this.pos[1] + this.hitbox[1]];
     var hpos2 = [ent.pos[0] + ent.hitbox[0], ent.pos[1] + ent.hitbox[1]];
 
-    /if the hitboxes actually overlap
+    //if the hitboxes actually overlap
     if (!(hpos1[0] > hpos2[0]+ent.hitbox[2] || (hpos1[0]+this.hitbox[2] < hpos2[0]))) {
       if (!(hpos1[1] > hpos2[1]+ent.hitbox[3] || (hpos1[1]+this.hitbox[3] < hpos2[1]))) {
         this.hit = 1;
