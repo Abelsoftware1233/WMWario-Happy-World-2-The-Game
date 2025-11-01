@@ -33,13 +33,14 @@ var vX = 0,
     vHeight = 240;
 
 // load our images
+// *** HIER IS DE CORRECTIE VAN DE PADEN VAN ../sprites NAAR /sprites ***
 resources.load([
-  '../sprites/player.png',
-  '../sprites/enemy.png',
-  '../sprites/tiles.png',
-  '../sprites/playerl.png',
-  '../sprites/items.png',
-  '../sprites/enemyr.png',
+  '/sprites/player.png',
+  '/sprites/enemy.png',
+  '/sprites/tiles.png',
+  '/sprites/playerl.png',
+  '/sprites/items.png',
+  '/sprites/enemyr.png',
 ]);
 
 resources.onReady(init);
