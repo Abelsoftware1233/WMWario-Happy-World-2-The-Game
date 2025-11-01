@@ -3,7 +3,7 @@
     window.Mario = {};
 
   Flag = Mario.Flag = function(pos) {
-    /afaik flags always have the same height and Y-position
+    //afaik flags always have the same height and Y-position
     this.pos = [pos, 49];
     this.hitbox = [0,0,0,0];
     this.vel = [0,0];
