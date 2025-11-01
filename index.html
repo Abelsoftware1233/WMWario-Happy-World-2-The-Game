@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Mario</title>
 
-    <!-- Externe CSS en Font laden (met de correcte dubbele //) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
@@ -79,43 +78,30 @@
         <p>Gebruik de pijltjestoetsen om te bewegen.<br>Gebruik **X** om te springen.<br>Gebruik **Z** om te rennen.</p>
     </div>
 
-    <!-- START: INLADEN VAN ALLE SCRIPTS IN DE JUISTE, STRIKTE VOLGORDE -->
-
-    <!-- 1. Basis Hulpprogramma's (moeten als eerste beschikbaar zijn) -->
     <script src="js/util.js"></script>
     <script src="js/input.js"></script>
     <script src="js/resources.js"></script>
     <script src="js/sprite.js"></script>
-    <script src="js/entities/floor.js"></script>
-    <script src="js/entities/prop.js"></script>
+    
+    <script src="js/floor.js"></script> 
+    <script src="js/prop.js"></script> 
+    <script src="js/player.js"></script> 
+    <script src="js/block.js"></script>
+    <script src="js/coin.js"></script>
+    <script src="js/pipe.js"></script>
+    <script src="js/rubble.js"></script>
+    <script src="js/goomba.js"></script>
+    <script src="js/koopa.js"></script>
+    <script src="js/fireball.js"></script>
+    <script src="js/star.js"></script>
+    <script src="js/mushroom.js"></script>
+    <script src="js/fireflower.js"></script>
+    <script src="js/flag.js"></script>
 
-    <!-- 2. De Speler Class (DEFINEERT MARIO.Player en MARIO namespace) -->
-    <script src="js/entities/player.js"></script>
-
-    <!-- 3. Overige Game Entiteiten (Afhankelijk van Mario namespace en sprites) -->
-    <script src="js/entities/block.js"></script>
-    <script src="js/entities/coin.js"></script>
-    <script src="js/entities/pipe.js"></script>
-    <script src="js/entities/rubble.js"></script>
-    <script src="js/entities/goomba.js"></script>
-    <script src="js/entities/koopa.js"></script>
-    <script src="js/entities/fireball.js"></script>
-    <script src="js/entities/star.js"></script>
-    <script src="js/entities/mushroom.js"></script>
-    <script src="js/entities/fireflower.js"></script>
-    <script src="js/entities/flag.js"></script>
-
-    <!-- 4. Level Definities (Afhankelijk van alle entiteiten) -->
     <script src="js/levels/level.js"></script>
     <script src="js/levels/11.js"></script>
     <script src="js/levels/11tunnel.js"></script>
 
-    <!-- 5. De Hoofd Game Loop (gebruikt alles hierboven) -->
     <script src="js/game.js"></script>
-    <!-- EINDE: INLADEN VAN ALLE SCRIPTS -->
-
-</body>
+    </body>
 </html>
-
-
-
