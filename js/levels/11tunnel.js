@@ -1,4 +1,4 @@
-Var oneonetunnel = Mario.oneonetunnel = function() {
+var oneonetunnel = Mario.oneonetunnel = function() {
   level = new Mario.Level({
     playerPos: [40,16],
     loader: Mario.oneonetunnel,
