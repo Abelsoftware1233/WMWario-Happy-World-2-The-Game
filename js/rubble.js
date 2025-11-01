@@ -1,6 +1,6 @@
 (function() {
   if (typeof Mario === 'undefined')
-  window.Mario = {};
+    window.Mario = {};
 
   //TODO: make each rubble an entity, use that render and write in Entity.update
   var Rubble = Mario.Rubble = function() {
@@ -46,7 +46,7 @@
   //but these move and need to be deleted, and i'd rather deal with the 1d array.
   Rubble.prototype.checkCollisions = function() {;}
 
-  Rubble.prototype.render = function() {
+  Rubble.prototype.render = function(ctx, vX, vY) { // parameters toegevoegd
     for(var i = 0; i < 4; i++) {
       if (this.sprites[i] === undefined) continue;
       this.sprites[i].render(ctx, this.poss[i][0], this.poss[i][1], vX, vY);
