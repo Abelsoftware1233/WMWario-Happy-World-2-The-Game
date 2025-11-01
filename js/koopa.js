@@ -6,11 +6,11 @@
     this.dying = false;
     this.shell = false;
 
-    this.para = para; /para. As in, is it a paratroopa?
+    this.para = para; //para. As in, is it a paratroopa?
 
-    /So, funny story. The actual hitboxes don't reach all the way to the ground.
-    /What that means is, as long as I use them to keep things on the floor
-    /making the hitboxes accurate will make enemies sink into the ground.
+    //So, funny story. The actual hitboxes don't reach all the way to the ground.
+    //What that means is, as long as I use them to keep things on the floor
+    //making the hitboxes accurate will make enemies sink into the ground.
     Mario.Entity.call(this, {
       pos: pos,
       sprite: sprite,
@@ -34,13 +34,14 @@
       this.left = (this.vel[0] < 0);
     }
 
+    // CORRECTIE: Pad is gecorrigeerd. Controleer of dit werkt.
     if (this.left) {
       this.sprite.img = '../sprites/enemy.png';
     } else {
       this.sprite.img = '../sprites/enemyr.png';
     }
 
-    if (this.pos[0] - vX > 336) { /if we're too far away, do nothing.
+    if (this.pos[0] - vX > 336) { //if we're too far away, do nothing.
       return;
     } else if (this.pos[0] - vX < -32) {
       delete level.enemies[this.idx];
@@ -62,6 +63,7 @@
         if (this.shell == 0) {
           this.sprite = level.koopaSprite();
           this.hitbox = [2,8,12,24]
+          // CORRECTIE: Pad is gecorrigeerd. Controleer of dit werkt.
           if (this.left) {
             this.sprite.img = '../sprites/enemyr.png';
             this.vel[0] = 0.5;
@@ -86,8 +88,8 @@
   };
 
   Koopa.prototype.collideWall = function() {
-    /This stops us from flipping twice on the same frame if we collide
-    /with multiple wall tiles simultaneously.
+    //This stops us from flipping twice on the same frame if we collide
+    //with multiple wall tiles simultaneously.
     this.turn = true;
   };
 
@@ -122,9 +124,9 @@
     }
     var that = this;
     level.enemies.forEach(function(enemy){
-      if (enemy === that) { /don't check collisions with ourselves.
+      if (enemy === that) { //don't check collisions with ourselves.
         return;
-      } else if (enemy.pos[0] - vX > 336){ /stop checking once we get to far away dudes.
+      } else if (enemy.pos[0] - vX > 336){ //stop checking once we get to far away dudes.
         return;
       } else {
         that.isCollideWith(enemy);
@@ -138,11 +140,11 @@
       return;
     }
 
-    /the first two elements of the hitbox array are an offset, so let's do this now.
+    //the first two elements of the hitbox array are an offset, so let's do this now.
     var hpos1 = [this.pos[0] + this.hitbox[0], this.pos[1] + this.hitbox[1]];
     var hpos2 = [ent.pos[0] + ent.hitbox[0], ent.pos[1] + ent.hitbox[1]];
 
-    /if the hitboxes actually overlap
+    //if the hitboxes actually overlap
     if (!(hpos1[0] > hpos2[0]+ent.hitbox[2] || (hpos1[0]+this.hitbox[2] < hpos2[0]))) {
       if (!(hpos1[1] > hpos2[1]+ent.hitbox[3] || (hpos1[1]+this.hitbox[3] < hpos2[1]))) {
         if (ent instanceof Mario.Player) {
@@ -152,7 +154,7 @@
           if (this.shell) {
             sounds.kick.play();
             if (this.vel[0] === 0) {
-              if (ent.left) { /I'm pretty sure this isn't the real logic.
+              if (ent.left) { //I'm pretty sure this isn't the real logic.
                 this.vel[0] = -4;
               } else {
                 this.vel[0] = 4;
@@ -162,9 +164,9 @@
                 this.vel[0] = 0;
               } else ent.damage();
             }
-          } else if (ent.vel[1] > 0) { /then we get BOPPED.
+          } else if (ent.vel[1] > 0) { //then we get BOPPED.
             this.stomp();
-          } else { /or the player gets hit
+          } else { //or the player gets hit
             ent.damage();
           }
         } else {
@@ -177,7 +179,7 @@
   };
 
   Koopa.prototype.stomp = function() {
-    /Turn this thing into a shell if it isn't already. Kick it if it is.
+    //Turn this thing into a shell if it isn't already. Kick it if it is.
     player.bounce = true;
     if (this.para) {
       this.para = false;
