@@ -72,3 +72,4 @@
   Fireflower.prototype.bump = function() {;}
 
 })();
+
