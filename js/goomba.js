@@ -64,7 +64,7 @@
         if (level.statics[baseY + i][baseX + j]) {
           level.statics[baseY + i][baseX + j].isCollideWith(this);
         }
-        if (level.blocks[baseY + i][baseX + j]) {
+        if (level.blocks[baseY + i] && level.blocks[baseY + i][baseX + j]) {
           level.blocks[baseY + i][baseX + j].isCollideWith(this);
         }
       }
