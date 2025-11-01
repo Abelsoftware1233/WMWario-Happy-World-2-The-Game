@@ -6,9 +6,10 @@
     var Util = Mario.Util = {};
 
     Util.inherits = function(subclass, superclass) {
-        function Surrogate() {};
+        function Surrogate() {}
 
         Surrogate.prototype = superclass.prototype;
         subclass.prototype = new Surrogate();
+        subclass.prototype.constructor = subclass; // Dit is een best practice voor JavaScript overerving
     }
-})()
+})();
